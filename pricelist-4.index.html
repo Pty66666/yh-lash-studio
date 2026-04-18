@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Y&H Lash Studio | Price List</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --gold: #9a7a4a;
+    --gold-light: #c4a97a;
+    --gold-dark: #6b5330;
+    --text: #3a2e1e;
+    --text-muted: #8a7a65;
+    --border: rgba(154,122,74,0.25);
+    --white: #fdfaf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'Noto Serif TC', serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  /* Header */
+  header {
+    padding: 52px 32px 36px;
+    position: relative;
+  }
+
+  .header-deco {
+    position: absolute;
+    top: 0; right: 0;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle at top right, rgba(154,122,74,0.12), transparent 70%);
+    border-radius: 0 0 0 120px;
+  }
+
+  .site-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 12vw, 64px);
+    font-weight: 300;
+    color: var(--gold-dark);
+    letter-spacing: -1px;
+    line-height: 1;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .site-title span {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .site-subtitle {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  /* Loyalty Box */
+  .loyalty-box {
+    margin: 0 24px 32px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    animation: fadeUp 0.8s 0.2s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loyalty-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(154,122,74,0.06) 0%, transparent 60%);
+  }
+
+  .loyalty-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .loyalty-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .loyalty-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .loyalty-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .loyalty-amount {
+    color: var(--text-muted);
+    font-size: 13px;
+    min-width: 100px;
+  }
+
+  .loyalty-rebate {
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  /* Notes */
+  .notes-bar {
+    margin: 0 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .note-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .note-dot {
+    width: 5px; height: 5px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Tab Navigation */
+  .tab-nav {
+    padding: 0 24px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 50px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover {
+    border-color: var(--gold-light);
+    color: var(--gold);
+  }
+
+  .tab-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  /* Panels */
+  .panel {
+    display: none;
+    padding: 0 24px;
+    animation: fadeIn 0.4s ease both;
+  }
+
+  .panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Service Card */
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(154,122,74,0.12);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold-dark));
+    border-radius: 2px 0 0 2px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold-dark);
+    letter-spacing: 0.5px;
+  }
+
+  .card-badge {
+    font-size: 10px;
+    background: rgba(154,122,74,0.12);
+    color: var(--gold);
+    padding: 3px 10px;
+    border-radius: 50px;
+    letter-spacing: 1px;
+  }
+
+  .card-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    background: rgba(154,122,74,0.05);
+    border-radius: 10px;
+    transition: background 0.2s;
+  }
+
+  .price-row:hover {
+    background: rgba(154,122,74,0.1);
+  }
+
+  .price-qty {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .price-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold-dark);
+    letter-spacing: 0.5px;
+  }
+
+  /* Full width rows */
+  .price-grid.full .price-row {
+    grid-column: span 2;
+  }
+
+  .price-grid.col1 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single price */
+  .single-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: rgba(154,122,74,0.05);
+    border-radius: 12px;
+  }
+
+  .single-price .label {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .single-price .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold-dark);
+  }
+
+  /* Removal card special */
+  .removal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .removal-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: rgba(154,122,74,0.05);
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+
+  .removal-row:hover { background: rgba(154,122,74,0.1); }
+
+  .removal-label { font-size: 13px; color: var(--text); }
+
+  .removal-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold-dark);
+  }
+
+  .removal-price.free { color: #6a9b7e; }
+
+  .removal-note {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0 12px;
+  }
+
+  /* LINE Button */
+  .line-btn-wrap {
+    padding: 0 24px;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+
+  .line-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    background: #06C755;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 20px rgba(6,199,85,0.3);
+  }
+
+  .line-btn:hover {
+    background: #05b04b;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(6,199,85,0.4);
+  }
+
+  .line-btn:active { transform: translateY(0); }
+
+  .line-icon {
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 32px 24px 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .footer-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold-light);
+    margin: 0 auto 16px;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="header-deco"></div>
+    <div class="site-title">Y&amp;H <span>Lash</span> Studio</div>
+    <div class="site-subtitle">服務價目表</div>
+  </header>
+
+  <!-- Loyalty -->
+  <div class="loyalty-box">
+    <div class="loyalty-title">儲值禮遇方案 · 專屬回饋</div>
+    <div class="loyalty-items">
+      <div class="loyalty-item">
+        <div class="loyalty-dot"></div>
+        <span class="loyalty-amount">NT$5,000 儲值</span>
+        <span class="loyalty-rebate">回饋 $300</span>
+      </div>
+      <div class="loyalty-item">
+        <div class="loyalty-dot"></div>
+        <span class="loyalty-amount">NT$10,000 儲值</span>
+        <span class="loyalty-rebate">回饋 $800</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes-bar">
+    <div class="note-item"><div class="note-dot"></div>本店消費可現金和轉帳</div>
+    <div class="note-item"><div class="note-dot"></div>VIP 享全館 9 折優惠</div>
+    <div class="note-item"><div class="note-dot"></div>23:00 夜間時段加 NT$100</div>
+  </div>
+
+  <!-- LINE Booking Button -->
+  <div class="line-btn-wrap">
+    <a href="https://lin.ee/NwodMcb" target="_blank" class="line-btn">
+      <svg class="line-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.477 2 2 6.032 2 11c0 2.826 1.47 5.338 3.77 7.03L5 22l3.43-1.8C9.55 20.7 10.76 21 12 21c5.523 0 10-4.03 10-9S17.523 2 12 2zm5.5 12.2h-3.2v.8h3.2v1H13V9h4.5v1H14v.8h3.5v1H14v.8h3.5v1.6zM11.5 15h-1L8 11.5V15H7V9h1l2.5 3.5V9h1v6zm-5 0H5.5V9H6.5v6z"/>
+      </svg>
+      LINE 預約諮詢
+    </a>
+  </div>
+
+  <!-- Tabs -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('lash')">日式單根 / 編織</button>
+    <button class="tab-btn" onclick="switchTab('bindlokk')">BIND LOKK</button>
+    <button class="tab-btn" onclick="switchTab('lower')">下睫毛</button>
+    <button class="tab-btn" onclick="switchTab('lift')">根源拉提</button>
+    <button class="tab-btn" onclick="switchTab('care')">睫毛管理</button>
+    <button class="tab-btn" onclick="switchTab('remove')">睫毛卸除</button>
+  </nav>
+
+  <!-- Panel: 日式單根 & 經典編織 -->
+  <div class="panel active" id="panel-lash">
+
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">日式單根</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-row">
+          <span class="price-qty">120 本</span>
+          <span class="price-val">$1,200</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">130 本</span>
+          <span class="price-val">$1,300</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">140 本</span>
+          <span class="price-val">$1,400</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">150 本</span>
+          <span class="price-val">$1,500</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">經典編織</div>
+        <div class="card-badge">以此類推</div>
+      </div>
+      <div class="price-grid">
+        <div class="price-row">
+          <span class="price-qty">120 本</span>
+          <span class="price-val">$1,000</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">140 本</span>
+          <span class="price-val">$1,200</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">160 本</span>
+          <span class="price-val">$1,400</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">180 本</span>
+          <span class="price-val">$1,600</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Panel: BIND LOKK -->
+  <div class="panel" id="panel-bindlokk">
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">BIND LOKK</div>
+      </div>
+      <div class="price-grid col1">
+        <div class="price-row">
+          <span class="price-qty">40 束</span>
+          <span class="price-val">$1,200</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">60 束</span>
+          <span class="price-val">$1,600</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">80 束</span>
+          <span class="price-val">$2,000</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: 下睫毛 -->
+  <div class="panel" id="panel-lower">
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">下睫毛</div>
+      </div>
+      <div class="price-grid col1">
+        <div class="price-row">
+          <span class="price-qty">20 本</span>
+          <span class="price-val">$300</span>
+        </div>
+        <div class="price-row">
+          <span class="price-qty">30 本</span>
+          <span class="price-val">$400</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: 根源拉提 -->
+  <div class="panel" id="panel-lift">
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">根源拉提</div>
+        <div class="card-badge">加時 30 MIN</div>
+      </div>
+      <div class="single-price">
+        <span class="label">單次</span>
+        <span class="val">$300</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: 睫毛管理 -->
+  <div class="panel" id="panel-care">
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">睫毛管理</div>
+      </div>
+      <div class="single-price">
+        <span class="label">單次</span>
+        <span class="val">$1,099</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: 睫毛卸除 -->
+  <div class="panel" id="panel-remove">
+    <div class="service-card">
+      <div class="card-header">
+        <div class="card-title">睫毛卸除</div>
+      </div>
+      <div class="removal-note">補睫 2 週內 7 折</div>
+      <div class="removal-grid">
+        <div class="removal-row">
+          <span class="removal-label">本店卸 · 本店接</span>
+          <span class="removal-price free">FREE</span>
+        </div>
+        <div class="removal-row">
+          <span class="removal-label">本店卸 · 不接</span>
+          <span class="removal-price">$200</span>
+        </div>
+        <div class="removal-row">
+          <span class="removal-label">他店卸 · 加接</span>
+          <span class="removal-price">$200</span>
+        </div>
+        <div class="removal-row">
+          <span class="removal-label">他店卸 · 不接</span>
+          <span class="removal-price">$300</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-line"></div>
+    歡迎預約 · 期待為您服務
+  </footer>
+
+</div>
+
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('panel-' + id).classList.add('active');
+  }
+</script>
+</body>
+</html>
