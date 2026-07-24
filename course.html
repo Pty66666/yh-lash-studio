@@ -95,7 +95,7 @@
   }
 
   .price-note {
-    width: 320px;
+    width: min(360px, 100%);
     margin-left: auto;
     margin-bottom: 20px;
     text-align: center;
@@ -103,6 +103,10 @@
     line-height: 1.45;
     letter-spacing: 1px;
     font-weight: 500;
+  }
+
+  .price-note .policy {
+    white-space: nowrap;
   }
 
   .main-title {
@@ -229,7 +233,7 @@
     }
 
     .price-note {
-      width: 250px;
+      width: min(340px, 100%);
       margin-bottom: 16px;
     }
 
@@ -298,8 +302,8 @@
     }
 
     .price-note {
-      width: 210px;
-      font-size: 18px;
+      width: min(330px, 100%);
+      font-size: clamp(17px, 4.8vw, 19px);
     }
 
     .main-title {
@@ -353,7 +357,7 @@
     <div class="brand">Y&amp;H <strong>Lash</strong> <span>Studio</span></div>
 
     <div class="price-note">
-      《本店提供一對一教科制》<br>
+      <span class="policy">《本店提供一對一教學制》</span><br>
       NT.35800元
     </div>
 
