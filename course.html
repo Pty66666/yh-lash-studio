@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Y&H Lash Studio | 美睫課程</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --gold: #9a7a4a;
+    --gold-light: #c4a97a;
+    --gold-dark: #6b5330;
+    --text: #3a2e1e;
+    --text-muted: #8a7a65;
+    --border: rgba(154,122,74,0.25);
+    --white: #fdfaf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    font-family: 'Noto Serif TC', serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.45;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  header {
+    padding: 48px 24px 28px;
+    text-align: center;
+  }
+
+  .site-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 11vw, 58px);
+    font-weight: 300;
+    color: var(--gold-dark);
+    line-height: 1;
+  }
+
+  .site-title span {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .site-subtitle {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+  }
+
+  .top-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 0 24px 20px;
+  }
+
+  .pill-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    color: var(--gold-dark);
+    background: rgba(253,250,244,0.72);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .pill-link.primary {
+    color: #fff;
+    background: #06C755;
+    border-color: #06C755;
+    box-shadow: 0 4px 18px rgba(6,199,85,0.24);
+  }
+
+  .course-card {
+    margin: 0 24px 18px;
+    background: linear-gradient(180deg, rgba(253,250,244,0.96), rgba(245,240,232,0.98));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 10px 35px rgba(107,83,48,0.08);
+  }
+
+  .course-kicker {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gold-dark);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+
+  .price-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(154,122,74,0.08);
+    border: 1px solid rgba(154,122,74,0.16);
+    margin-bottom: 14px;
+  }
+
+  .price-box span {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  .price-box strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold-dark);
+    white-space: nowrap;
+  }
+
+  .course-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .course-item {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(154,122,74,0.18);
+    border-radius: 14px;
+    background: rgba(253,250,244,0.72);
+  }
+
+  .course-level {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    border-radius: 50%;
+    background: rgba(154,122,74,0.12);
+    color: var(--gold-dark);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .course-level.highlight { background: rgba(154,122,74,0.26); }
+
+  .course-item h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .course-meta {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .course-desc {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 24px 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 420px) {
+    .top-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .price-box {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <header>
+    <div class="site-title">Y&amp;H <span>Lash</span> Studio</div>
+    <div class="site-subtitle">美睫課程介紹</div>
+  </header>
+
+  <div class="top-actions">
+    <a href="index.html" class="pill-link">返回價目表</a>
+    <a href="https://lin.ee/NwodMcb" target="_blank" class="pill-link primary">LINE 諮詢</a>
+  </div>
+
+  <section class="course-card">
+    <div class="course-kicker">Private Lash Course</div>
+    <h1>日式嫁接睫毛課程</h1>
+    <div class="price-box">
+      <span>一對一教科制 · 初階完整課程</span>
+      <strong>NT$35,800</strong>
+    </div>
+    <div class="course-list">
+      <div class="course-item">
+        <div class="course-level">入門</div>
+        <div>
+          <h2>嫁接體驗班</h2>
+          <div class="course-meta">3 HR｜1 種</div>
+          <div class="course-desc">適合無嫁接經驗、想先了解美睫產業與自身適性的人。</div>
+        </div>
+      </div>
+      <div class="course-item">
+        <div class="course-level highlight">初階</div>
+        <div>
+          <h2>日式睫毛嫁接初階課程</h2>
+          <div class="course-meta">16 HR｜4 種</div>
+          <div class="course-desc">從基礎手法、工具使用、衛生管理到日式嫁接流程完整學習。</div>
+        </div>
+      </div>
+      <div class="course-item">
+        <div class="course-level">中階</div>
+        <div>
+          <h2>UpWord Lash 日本根元矯正術</h2>
+          <div class="course-meta">4 HR｜1 種</div>
+          <div class="course-desc">以更溫和安全的物理性手法，改善睫毛下垂與毛流凌亂。</div>
+        </div>
+      </div>
+      <div class="course-item">
+        <div class="course-level">高階</div>
+        <div>
+          <h2>Volume Lash 日式空氣感嫁接睫毛課程</h2>
+          <div class="course-meta">12 HR｜3 種</div>
+          <div class="course-desc">適合有穩定嫁接經驗，想提升作品精緻度與店內項目的人。</div>
+        </div>
+      </div>
+      <div class="course-item">
+        <div class="course-level">進階</div>
+        <div>
+          <h2>日式嫁接進階技法調整班</h2>
+          <div class="course-meta">5 HR｜1 種</div>
+          <div class="course-desc">針對實際操作問題校正，提升持久度、排列整齊度與嫁接效率。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>本課程為一對一技能交流教學，非屬職業訓練機構，亦無販售產品。</footer>
+</div>
+</body>
+</html>
