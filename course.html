@@ -15,14 +15,13 @@
     --line: #d8cdbc;
     --line-dark: #9f8d77;
     --gold: #9b7a50;
+    --gold-dark: #705537;
     --green: #06c755;
   }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     min-height: 100vh;
@@ -85,7 +84,6 @@
     color: #5f4931;
     font-size: clamp(38px, 8vw, 64px);
     line-height: 0.95;
-    letter-spacing: 0;
     text-align: center;
   }
 
@@ -112,7 +110,7 @@
   }
 
   .lead {
-    width: min(600px, 100%);
+    width: min(630px, 100%);
     margin: 22px auto 0;
     color: var(--muted);
     font-size: 17px;
@@ -120,96 +118,160 @@
     text-align: center;
   }
 
-  .hero-price {
-    margin-top: 18px;
-    text-align: center;
-  }
-
-  .hero-price span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 48px;
-    padding: 8px 28px 10px;
-    border-top: 1px solid var(--line-dark);
-    border-bottom: 1px solid var(--line-dark);
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
-    font-size: clamp(28px, 6vw, 42px);
-    font-weight: 600;
-    letter-spacing: 2px;
-  }
-
-  .summary {
+  .category-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    margin-top: 38px;
-    border: 1px solid var(--line);
-    background: var(--line);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
   }
 
-  .summary div {
-    min-height: 96px;
+  .category-card {
+    min-height: 236px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    padding: 18px 12px;
-    background: var(--paper-soft);
-    text-align: center;
-  }
-
-  .summary span {
-    color: var(--muted);
-    font-size: 12px;
-    letter-spacing: 2px;
-  }
-
-  .summary strong {
-    color: var(--ink);
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-  }
-
-  .section {
-    margin-top: 34px;
-    padding: 38px 42px;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 24px;
     border: 1px solid var(--line);
-    background: var(--paper);
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-
-  .section-title::after {
-    content: "";
-    height: 1px;
-    flex: 1;
-    background: var(--line);
-  }
-
-  h2 {
+    background: var(--paper-soft);
     color: var(--ink);
-    font-size: 25px;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .category-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 34px rgba(112,85,55,0.1);
+  }
+
+  .category-card.featured {
+    border-color: var(--line-dark);
+    background: #f7efe4;
+  }
+
+  .category-kicker {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .category-card h2 {
+    margin-top: 8px;
+    color: var(--ink);
+    font-size: 23px;
     line-height: 1.35;
     font-weight: 600;
     letter-spacing: 1px;
   }
 
-  .curriculum {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 20px;
-    list-style: none;
+  .category-meta {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
   }
 
-  .curriculum li {
+  .category-price {
+    color: var(--gold-dark);
+    font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .category-more {
+    color: var(--gold-dark);
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .course-section {
+    scroll-margin-top: 88px;
+    margin-top: 34px;
+    padding: 42px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .course-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 22px;
+    align-items: end;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-label {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    color: var(--ink);
+    font-size: clamp(26px, 5vw, 38px);
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .price-block {
+    min-width: 172px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--line-dark);
+    border-bottom: 1px solid var(--line-dark);
+    text-align: center;
+  }
+
+  .price-block span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .price-block strong {
+    color: var(--gold-dark);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.35fr;
+    gap: 34px;
+    margin-top: 30px;
+  }
+
+  .info-group + .info-group {
+    margin-top: 26px;
+  }
+
+  h3 {
+    margin-bottom: 12px;
+    color: var(--gold-dark);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  p {
+    color: #514a42;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .soft-list {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .soft-list li {
     position: relative;
     padding-left: 18px;
     color: #514a42;
@@ -217,51 +279,49 @@
     line-height: 1.75;
   }
 
-  .curriculum li::before {
+  .soft-list li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.86em;
+    top: 0.82em;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: var(--gold);
   }
 
-  .intro {
-    color: #514a42;
-    font-size: 18px;
-    line-height: 2.05;
-  }
-
-  .intro p + p {
-    margin-top: 8px;
+  .curriculum {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 20px;
   }
 
   .feature-list {
-    margin-top: 30px;
     display: grid;
-    gap: 18px;
+    gap: 16px;
   }
 
   .feature {
-    padding: 22px 24px;
+    padding: 20px 22px;
     border-top: 1px solid var(--line);
     background: linear-gradient(90deg, rgba(155,122,80,0.08), rgba(255,253,248,0));
   }
 
   .feature h3 {
-    margin-bottom: 9px;
+    margin-bottom: 8px;
     color: var(--gold);
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 19px;
   }
 
-  .feature p {
-    color: #514a42;
-    font-size: 16px;
-    line-height: 1.85;
+  .notice-box {
+    margin-top: 30px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: var(--paper-soft);
+  }
+
+  .notice-box p + p {
+    margin-top: 12px;
   }
 
   .payment {
@@ -269,15 +329,10 @@
     grid-template-columns: 1fr auto;
     gap: 24px;
     align-items: center;
+    margin-top: 34px;
     padding: 28px 32px;
     border: 1px solid var(--line-dark);
     background: #f2eadf;
-  }
-
-  .payment p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.8;
   }
 
   .payment strong {
@@ -303,7 +358,7 @@
     letter-spacing: 1px;
   }
 
-  .notice {
+  .footer-note {
     margin-top: 30px;
     color: var(--muted);
     font-size: 13px;
@@ -311,10 +366,33 @@
     text-align: center;
   }
 
-  .notice strong {
+  .footer-note strong {
     display: block;
     color: var(--ink);
     font-weight: 500;
+  }
+
+  @media (max-width: 820px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .category-card {
+      min-height: auto;
+    }
+
+    .course-head,
+    .detail-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .price-block {
+      width: 100%;
+    }
+
+    .curriculum {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 720px) {
@@ -323,31 +401,19 @@
     }
 
     .hero,
-    .section {
+    .course-section {
       padding: 34px 22px;
     }
 
-    .summary {
-      grid-template-columns: 1fr;
-    }
-
-    .summary div {
-      min-height: 78px;
-    }
-
-    .curriculum {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    .curriculum li {
+    .lead {
       font-size: 15px;
-      line-height: 1.72;
+      line-height: 1.85;
     }
 
-    .intro {
-      font-size: 16px;
-      line-height: 1.95;
+    p,
+    .soft-list li {
+      font-size: 15px;
+      line-height: 1.78;
     }
 
     .payment {
@@ -366,29 +432,25 @@
     }
 
     .hero,
-    .section {
+    .course-section {
       padding: 30px 18px;
     }
 
-    .eyebrow {
-      letter-spacing: 3px;
+    .eyebrow,
+    .section-label,
+    .category-kicker {
+      letter-spacing: 2px;
     }
 
-    .lead {
-      font-size: 15px;
-      line-height: 1.85;
+    .category-card {
+      padding: 22px 20px;
     }
 
-    .section-title {
-      margin-bottom: 22px;
+    .category-card h2 {
+      font-size: 22px;
     }
 
-    h2 {
-      font-size: 23px;
-      white-space: nowrap;
-    }
-
-    .feature {
+    .notice-box {
       padding: 20px 18px;
     }
   }
@@ -404,98 +466,215 @@
     <header class="hero">
       <div class="brand">Y&amp;H <strong>Lash</strong> Studio</div>
       <div class="eyebrow">PRIVATE JAPANESE LASH COURSE</div>
-      <h1>日式睫毛嫁接初階課程</h1>
-      <div class="hero-price">
-        <span>NT.35800元</span>
-      </div>
+      <h1>美睫一對一項目介紹</h1>
       <p class="lead">
-        從零開始建立正確觀念、工具使用、前置流程與實作手法。課程採一對一技能交流教學，陪你把每個動作練到穩定、清楚、能真正上手。
+        依照目前需求，提供一對一預約項目。從體驗入門、初階完整操作分享，到進階手法調整，讓客人能清楚選擇最適合自己的內容。
       </p>
 
-      <div class="summary" aria-label="課程摘要">
-        <div>
-          <span>課程形式</span>
-          <strong>一對一教學</strong>
-        </div>
-        <div>
-          <span>付款方式</span>
-          <strong>匯款</strong>
-        </div>
+      <div class="category-grid" aria-label="項目分類">
+        <a class="category-card" href="#trial">
+          <div>
+            <div class="category-kicker">TRIAL</div>
+            <h2>日式嫁接體驗</h2>
+            <p class="category-meta">1 次，約 3 小時<br>適合零經驗與想先了解流程者</p>
+          </div>
+          <div>
+            <div class="category-price">$3,800</div>
+            <div class="category-more">查看內容</div>
+          </div>
+        </a>
+
+        <a class="category-card featured" href="#basic">
+          <div>
+            <div class="category-kicker">BEGINNER</div>
+            <h2>日式嫁接初階</h2>
+            <p class="category-meta">初階完整項目<br>從基礎觀念到實作流程完整建立</p>
+          </div>
+          <div>
+            <div class="category-price">$35,800</div>
+            <div class="category-more">查看內容</div>
+          </div>
+        </a>
+
+        <a class="category-card" href="#advanced">
+          <div>
+            <div class="category-kicker">ADVANCED</div>
+            <h2>日式進階手法調整</h2>
+            <p class="category-meta">1 次，約 5 小時<br>適合已有嫁接經驗想調整細節者</p>
+          </div>
+          <div>
+            <div class="category-price">$15,000</div>
+            <div class="category-more">查看內容</div>
+          </div>
+        </a>
       </div>
     </header>
 
-    <section class="section">
-      <div class="section-title">
-        <h2>課程內容</h2>
+    <section class="course-section" id="trial">
+      <div class="course-head">
+        <div>
+          <div class="section-label">COURSE 01</div>
+          <h2>日式嫁接體驗</h2>
+        </div>
+        <div class="price-block">
+          <span>體驗價</span>
+          <strong>$3,800</strong>
+        </div>
       </div>
-      <ul class="curriculum">
-        <li>認識睫毛商材及設備認識與運用</li>
-        <li>衛生管理</li>
-        <li>人工睫毛翹度種類</li>
-        <li>嫁接睫毛專用膠水及取膠方式</li>
-        <li>認識眼型排列種類</li>
-        <li>日式嫁接技巧</li>
-        <li>紙上操作及假人頭嫁接</li>
-        <li>使用膠水粘黏方式</li>
-        <li>日式嫁接基礎手法</li>
-        <li>工具使用方式及注意事項</li>
-        <li>顧客眼型設計判斷</li>
-        <li>專業日式前置流程</li>
-        <li>日式標準貼膠布</li>
-        <li>嫁接姿勢及卸除睫毛</li>
-        <li>嫁接後的服務流程</li>
-        <li>單根卸除流程</li>
-        <li>全眼卸除流程</li>
-        <li>提升持久度秘訣</li>
-        <li>拍攝作品</li>
-        <li>複習術科全流程</li>
-        <li>日式下睫毛嫁接手法</li>
-        <li>問題指導修正</li>
-        <li>拍照修圖技巧</li>
-      </ul>
+
+      <div class="detail-grid">
+        <div>
+          <div class="info-group">
+            <h3>時間</h3>
+            <p>1 次，約 3 小時</p>
+          </div>
+          <div class="info-group">
+            <h3>適合對象</h3>
+            <p>零經驗、想了解日式嫁接流程，或想評估自己是否對美睫技術有興趣者。</p>
+          </div>
+        </div>
+        <div class="notice-box">
+          <h3>注意事項</h3>
+          <p>預約前請先與我們聯繫，確認時間、內容與適合項目。</p>
+          <p>一對一項目開始後，若因個人因素臨時取消或中途停止，已安排及已進行之內容恕不退費。</p>
+          <p>本項目採一對一預約方式進行，內容為個人經驗分享、操作示範與實作指導。非職業訓練、證照課程或官方認證項目，無提供證照、就業保證，亦無強制購買產品。</p>
+        </div>
+      </div>
     </section>
 
-    <section class="section">
-      <div class="section-title">
-        <h2>技術特色介紹</h2>
-      </div>
-      <div class="intro">
-        <p>從零開始，建立真正的日式技術。</p>
-        <p>日式單根並非只是接上睫毛，而是透過正確的分毛、貼合與角度控制，打造自然且持久的嫁接效果。</p>
+    <section class="course-section" id="basic">
+      <div class="course-head">
+        <div>
+          <div class="section-label">COURSE 02</div>
+          <h2>日式嫁接初階</h2>
+        </div>
+        <div class="price-block">
+          <span>項目費用</span>
+          <strong>$35,800</strong>
+        </div>
       </div>
 
-      <div class="feature-list">
+      <div class="detail-grid">
+        <div>
+          <div class="info-group">
+            <h3>項目重點</h3>
+            <p>從零開始建立正確觀念、工具使用、前置流程與實作手法。採一對一預約方式進行，內容為個人經驗分享、操作示範與實作指導，陪你把每個動作練到穩定、清楚。</p>
+          </div>
+          <div class="info-group">
+            <h3>付款方式</h3>
+            <p>匯款</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>內容項目</h3>
+          <ul class="soft-list curriculum">
+            <li>認識睫毛商材及設備認識與運用</li>
+            <li>衛生管理</li>
+            <li>人工睫毛翹度種類</li>
+            <li>嫁接睫毛專用膠水及取膠方式</li>
+            <li>認識眼型排列種類</li>
+            <li>日式嫁接技巧</li>
+            <li>紙上操作及假人頭嫁接</li>
+            <li>使用膠水粘黏方式</li>
+            <li>日式嫁接基礎手法</li>
+            <li>工具使用方式及注意事項</li>
+            <li>顧客眼型設計判斷</li>
+            <li>專業日式前置流程</li>
+            <li>日式標準貼膠布</li>
+            <li>嫁接姿勢及卸除睫毛</li>
+            <li>嫁接後的服務流程</li>
+            <li>單根卸除流程</li>
+            <li>全眼卸除流程</li>
+            <li>提升持久度秘訣</li>
+            <li>拍攝作品</li>
+            <li>複習術科全流程</li>
+            <li>日式下睫毛嫁接手法</li>
+            <li>問題指導修正</li>
+            <li>拍照修圖技巧</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="info-group" style="margin-top: 32px;">
+        <h3>技術特色介紹</h3>
+        <p>從零開始，建立真正的日式技術。日式單根並非只是接上睫毛，而是透過正確的分毛、貼合與角度控制，打造自然且持久的嫁接效果。</p>
+      </div>
+
+      <div class="feature-list" style="margin-top: 24px;">
         <article class="feature">
-          <h3>✓ 分毛技術</h3>
+          <h3>分毛技術</h3>
           <p>每根真睫毛皆獨立分離，降低沾黏與拉扯。</p>
         </article>
         <article class="feature">
-          <h3>✓ 精準貼合</h3>
+          <h3>精準貼合</h3>
           <p>完整貼合真睫毛，提升持久度與舒適感。</p>
         </article>
         <article class="feature">
-          <h3>✓ 真人實作</h3>
+          <h3>真人實作</h3>
           <p>一對一指導，每個步驟立即修正。</p>
         </article>
         <article class="feature">
-          <h3>✓ 完整課後輔導</h3>
+          <h3>完整課後輔導</h3>
           <p>建立獨立接客能力，不只是學會，更能真正上手。</p>
         </article>
       </div>
+
+      <div class="notice-box">
+        <h3>注意事項</h3>
+        <p>預約前請先與我們聯繫，確認時間、內容與適合項目。</p>
+        <p>一對一項目開始後，若因個人因素臨時取消或中途停止，已安排及已進行之內容恕不退費。</p>
+        <p>本項目採一對一預約方式進行，內容為個人經驗分享、操作示範與實作指導。非職業訓練、證照課程或官方認證項目，無提供證照、就業保證，亦無強制購買產品。</p>
+      </div>
     </section>
 
-    <section class="section payment" aria-label="付款方式">
+    <section class="course-section" id="advanced">
+      <div class="course-head">
+        <div>
+          <div class="section-label">COURSE 03</div>
+          <h2>日式進階手法調整</h2>
+        </div>
+        <div class="price-block">
+          <span>費用</span>
+          <strong>$15,000</strong>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div>
+          <div class="info-group">
+            <h3>時間</h3>
+            <p>1 次，約 5 小時</p>
+          </div>
+          <div class="info-group">
+            <h3>適合對象</h3>
+            <ul class="soft-list">
+              <li>已有美睫嫁接經驗，想加強部分手法或調整操作細節者。</li>
+              <li>曾學過美睫，但在手法、穩定度或成品表現上遇到瓶頸者。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="notice-box">
+          <h3>注意事項</h3>
+          <p>預約前請先與我們聯繫，確認時間、內容與適合項目。</p>
+          <p>一對一項目開始後，若因個人因素臨時取消或中途停止，已安排及已進行之內容恕不退費。</p>
+          <p>本項目採一對一預約方式進行，內容為個人經驗分享、操作示範與實作指導。非職業訓練、證照課程或官方認證項目，無提供證照、就業保證，亦無強制購買產品。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="payment" aria-label="付款方式與諮詢">
       <div>
-        <h2>付款方式</h2>
-        <p>報名前可先透過 LINE 確認課程時間與細節。</p>
-        <strong>匯款</strong>
+        <h2>預約與付款</h2>
+        <p>預約前可先透過 LINE 確認適合項目、可預約時段與付款資訊。</p>
+        <strong>付款方式：匯款</strong>
       </div>
       <a class="cta" href="https://lin.ee/NwodMcb" target="_blank">LINE 諮詢</a>
     </section>
 
-    <p class="notice">
-      <strong>本店提供一對一教學制</strong>
-      本課程為一對一技能交流教學，非屬職業訓練機構，不涉及發證或官方認證，亦無販售產品。
+    <p class="footer-note">
+      <strong>本店提供一對一預約項目</strong>
+      內容為個人經驗分享、操作示範與實作指導；非職業訓練、證照課程或官方認證項目，無提供證照、就業保證，亦無強制購買產品。
     </p>
   </main>
 </body>
