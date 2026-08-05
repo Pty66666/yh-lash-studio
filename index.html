@@ -490,10 +490,9 @@
   }
 
   .visit-counter {
-    position: fixed;
-    left: 10px;
-    bottom: 8px;
-    z-index: 30;
+    display: block;
+    width: fit-content;
+    margin: 12px auto 0;
     color: rgba(107, 83, 48, 0.28);
     font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
     font-size: 10px;
@@ -505,8 +504,6 @@
 
   @media (max-width: 420px) {
     .visit-counter {
-      left: 8px;
-      bottom: 6px;
       font-size: 9px;
       opacity: 0.72;
     }
@@ -514,7 +511,6 @@
 </style>
 </head>
 <body>
-<div class="visit-counter" id="visit-counter" aria-hidden="true">YH D -- / M --</div>
 <div class="wrapper">
 
   <header>
@@ -731,6 +727,7 @@
   <footer>
     <div class="footer-line"></div>
     歡迎預約 · 期待為您服務
+    <span class="visit-counter" id="visit-counter" aria-hidden="true">YH D -- / M --</span>
   </footer>
 
 </div>
