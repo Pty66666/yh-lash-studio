@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -487,9 +488,33 @@
     background: var(--gold-light);
     margin: 0 auto 16px;
   }
+
+  .visit-counter {
+    position: fixed;
+    left: 10px;
+    bottom: 8px;
+    z-index: 30;
+    color: rgba(107, 83, 48, 0.28);
+    font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (max-width: 420px) {
+    .visit-counter {
+      left: 8px;
+      bottom: 6px;
+      font-size: 9px;
+      opacity: 0.72;
+    }
+  }
 </style>
 </head>
 <body>
+<div class="visit-counter" id="visit-counter" aria-hidden="true">YH D -- / M --</div>
 <div class="wrapper">
 
   <header>
@@ -717,6 +742,39 @@
     event.currentTarget.classList.add('active');
     document.getElementById('panel-' + id).classList.add('active');
   }
+
+  (async function updateQuietCounter() {
+    const el = document.getElementById('visit-counter');
+    if (!el) return;
+
+    const now = new Date();
+    const taipei = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Taipei' }));
+    const yyyy = taipei.getFullYear();
+    const mm = String(taipei.getMonth() + 1).padStart(2, '0');
+    const dd = String(taipei.getDate()).padStart(2, '0');
+    const dayKey = `${yyyy}-${mm}-${dd}`;
+    const monthKey = `${yyyy}-${mm}`;
+    const namespace = 'yh-lash-studio';
+
+    async function readOrCount(name, storageKey) {
+      const counted = localStorage.getItem(storageKey);
+      const action = counted ? '' : '/up';
+      const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${name}${action}`, { cache: 'no-store' });
+      const data = await res.json();
+      if (!counted) localStorage.setItem(storageKey, '1');
+      return data.count || 0;
+    }
+
+    try {
+      const [dayCount, monthCount] = await Promise.all([
+        readOrCount(`day-${dayKey}`, `yh-counter-day-${dayKey}`),
+        readOrCount(`month-${monthKey}`, `yh-counter-month-${monthKey}`)
+      ]);
+      el.textContent = `YH D ${dayCount} / M ${monthCount}`;
+    } catch (error) {
+      el.textContent = 'YH D -- / M --';
+    }
+  })();
 </script>
 </body>
 </html>
