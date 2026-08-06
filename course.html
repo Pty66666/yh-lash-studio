@@ -387,7 +387,7 @@
     left: 10px;
     bottom: 8px;
     z-index: 30;
-    color: rgba(112, 85, 55, 0.28);
+    color: rgba(112, 85, 55, 0.46);
     font-family: 'Cormorant Garamond', 'Noto Serif TC', serif;
     font-size: 10px;
     letter-spacing: 1px;
@@ -483,7 +483,7 @@
       left: 8px;
       bottom: 6px;
       font-size: 9px;
-      opacity: 0.72;
+      opacity: 0.86;
     }
   }
 </style>
@@ -731,19 +731,16 @@
       const monthKey = `${yyyy}-${mm}`;
       const namespace = 'yh-lash-studio';
 
-      async function readOrCount(name, storageKey) {
-        const counted = localStorage.getItem(storageKey);
-        const action = counted ? '' : '/up';
-        const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${name}${action}`, { cache: 'no-store' });
+      async function countView(name) {
+        const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${name}/up`, { cache: 'no-store' });
         const data = await res.json();
-        if (!counted) localStorage.setItem(storageKey, '1');
         return data.count || 0;
       }
 
       try {
         const [dayCount, monthCount] = await Promise.all([
-          readOrCount(`day-${dayKey}`, `yh-counter-day-${dayKey}`),
-          readOrCount(`month-${monthKey}`, `yh-counter-month-${monthKey}`)
+          countView(`day-${dayKey}`),
+          countView(`month-${monthKey}`)
         ]);
         el.textContent = `YH D ${dayCount} / M ${monthCount}`;
       } catch (error) {
